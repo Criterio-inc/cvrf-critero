@@ -152,8 +152,13 @@ CREATE TABLE cvrf_nodes (
   confidence TEXT,
   stakeholder_id UUID,
 
-  -- Linking
+  -- Assumptions
+  assumption_text TEXT,
+  assumption_validated BOOLEAN DEFAULT FALSE,
+
+  -- Linking (standalone: no external FKs, just UUIDs for future use)
   linked_risk_id UUID,
+  linked_effect_goal_id UUID,
   linked_budget_id UUID,
 
   created_at TIMESTAMPTZ DEFAULT NOW(),
@@ -185,7 +190,9 @@ CREATE TABLE cvrf_edges (
   analysis_id UUID NOT NULL REFERENCES cvrf_analyses(id) ON DELETE CASCADE,
   source_node_id UUID NOT NULL REFERENCES cvrf_nodes(id) ON DELETE CASCADE,
   target_node_id UUID NOT NULL REFERENCES cvrf_nodes(id) ON DELETE CASCADE,
+  edge_type TEXT,
   label TEXT,
+  assumption TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -217,11 +224,13 @@ CREATE TABLE cvrf_stakeholders (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   analysis_id UUID NOT NULL REFERENCES cvrf_analyses(id) ON DELETE CASCADE,
   name TEXT NOT NULL,
-  role TEXT,
-  influence TEXT,
-  interest TEXT,
-  notes TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW()
+  category TEXT,
+  description TEXT,
+  influence_level INTEGER,
+  interest_level INTEGER,
+  engagement_plan TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
 ALTER TABLE cvrf_stakeholders ENABLE ROW LEVEL SECURITY;
@@ -245,9 +254,12 @@ CREATE TABLE cvrf_benefit_values (
   analysis_id UUID NOT NULL REFERENCES cvrf_analyses(id) ON DELETE CASCADE,
   node_id UUID NOT NULL REFERENCES cvrf_nodes(id) ON DELETE CASCADE,
   year INTEGER NOT NULL,
-  low NUMERIC DEFAULT 0,
+  pessimistic NUMERIC DEFAULT 0,
   likely NUMERIC DEFAULT 0,
-  high NUMERIC DEFAULT 0,
+  optimistic NUMERIC DEFAULT 0,
+  actual NUMERIC,
+  data_source TEXT,
+  calculation_notes TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   UNIQUE(node_id, year)
 );
@@ -274,6 +286,9 @@ CREATE TABLE cvrf_cost_values (
   node_id UUID NOT NULL REFERENCES cvrf_nodes(id) ON DELETE CASCADE,
   year INTEGER NOT NULL,
   amount NUMERIC DEFAULT 0,
+  actual NUMERIC,
+  note TEXT,
+  cost_type TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   UNIQUE(node_id, year)
 );
@@ -329,9 +344,13 @@ CREATE TABLE cvrf_checkpoints (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   analysis_id UUID NOT NULL REFERENCES cvrf_analyses(id) ON DELETE CASCADE,
   checkpoint_date DATE NOT NULL,
+  checkpoint_type TEXT,
   status TEXT DEFAULT 'planned', -- 'planned' | 'completed'
   overall_realization_percent NUMERIC,
-  notes TEXT,
+  findings TEXT,
+  corrective_actions TEXT,
+  completed_at TIMESTAMPTZ,
+  completed_by UUID REFERENCES profiles(id),
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -340,6 +359,34 @@ ALTER TABLE cvrf_checkpoints ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Manage checkpoints via analysis"
   ON cvrf_checkpoints FOR ALL
+  USING (
+    analysis_id IN (
+      SELECT id FROM cvrf_analyses WHERE owner_id = auth.uid()
+      UNION
+      SELECT analysis_id FROM cvrf_analysis_shares WHERE shared_with = auth.uid() AND role = 'editor'
+    )
+  );
+
+-- =============================================================================
+-- Lessons learned — Step 12
+-- =============================================================================
+
+CREATE TABLE cvrf_lessons (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  analysis_id UUID NOT NULL REFERENCES cvrf_analyses(id) ON DELETE CASCADE,
+  category TEXT,
+  title TEXT NOT NULL,
+  description TEXT,
+  impact TEXT,
+  recommendation TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE cvrf_lessons ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Manage lessons via analysis"
+  ON cvrf_lessons FOR ALL
   USING (
     analysis_id IN (
       SELECT id FROM cvrf_analyses WHERE owner_id = auth.uid()
@@ -359,6 +406,7 @@ CREATE INDEX idx_cvrf_benefit_values_analysis ON cvrf_benefit_values(analysis_id
 CREATE INDEX idx_cvrf_cost_values_analysis ON cvrf_cost_values(analysis_id);
 CREATE INDEX idx_cvrf_stakeholders_analysis ON cvrf_stakeholders(analysis_id);
 CREATE INDEX idx_cvrf_checkpoints_analysis ON cvrf_checkpoints(analysis_id);
+CREATE INDEX idx_cvrf_lessons_analysis ON cvrf_lessons(analysis_id);
 CREATE INDEX idx_cvrf_analysis_shares_shared ON cvrf_analysis_shares(shared_with);
 
 -- =============================================================================
@@ -383,4 +431,10 @@ CREATE TRIGGER set_updated_at BEFORE UPDATE ON cvrf_benefit_owners
   FOR EACH ROW EXECUTE FUNCTION update_updated_at();
 
 CREATE TRIGGER set_updated_at BEFORE UPDATE ON cvrf_checkpoints
+  FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+
+CREATE TRIGGER set_updated_at BEFORE UPDATE ON cvrf_stakeholders
+  FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+
+CREATE TRIGGER set_updated_at BEFORE UPDATE ON cvrf_lessons
   FOR EACH ROW EXECUTE FUNCTION update_updated_at();
