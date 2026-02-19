@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CvrfAnalysis } from '@/hooks/cvrf/useCvrfAnalysis';
+import { Network } from 'lucide-react';
 
 interface CvrfStep3Props {
   analysis: CvrfAnalysis;
@@ -28,7 +29,7 @@ export function CvrfStep3({ analysis, onUpdate, readOnly }: CvrfStep3Props) {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center py-16 text-center">
-            <p className="text-4xl mb-4">🌳</p>
+            <Network className="h-12 w-12 text-primary mb-4" />
             <h3 className="text-lg font-semibold mb-2">
               Nyttotrad -- Value Map kommer implementeras
             </h3>

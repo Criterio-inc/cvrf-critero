@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/form';
 import { CvrfAnalysis } from '@/hooks/cvrf/useCvrfAnalysis';
 import { cn } from '@/lib/utils';
+import { Check, Loader2, X } from 'lucide-react';
 
 const smartGoalSchema = z.object({
   title: z.string().trim().min(1, 'Ange ett målnamn').max(200, 'Max 200 tecken'),
@@ -118,8 +119,8 @@ export function CvrfStep1({ analysis, onUpdate, readOnly }: CvrfStep1Props) {
             saveStatus !== 'idle' && 'opacity-100'
           )}
         >
-          {saveStatus === 'saving' && '⟳ Sparar...'}
-          {saveStatus === 'saved' && '✓ Sparad'}
+          {saveStatus === 'saving' && <><Loader2 className="h-3 w-3 animate-spin" /> Sparar...</>}
+          {saveStatus === 'saved' && <><Check className="h-3 w-3" /> Sparad</>}
         </Badge>
       </div>
 
@@ -230,7 +231,7 @@ export function CvrfStep1({ analysis, onUpdate, readOnly }: CvrfStep1Props) {
                               className="mt-6 shrink-0 text-destructive hover:text-destructive"
                               onClick={() => remove(index)}
                             >
-                              ✕
+                              <X className="h-4 w-4" />
                             </Button>
                           )}
                         </div>

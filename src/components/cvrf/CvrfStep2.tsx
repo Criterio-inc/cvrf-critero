@@ -27,6 +27,7 @@ import {
 } from '@/components/ui/form';
 import { CvrfAnalysis } from '@/hooks/cvrf/useCvrfAnalysis';
 import { cn } from '@/lib/utils';
+import { Check, Loader2, X, ShieldCheck } from 'lucide-react';
 
 const alternativeSchema = z.object({
   title: z.string().trim().min(1, 'Ange ett namn').max(200, 'Max 200 tecken'),
@@ -142,8 +143,8 @@ export function CvrfStep2({ analysis, onUpdate, readOnly }: CvrfStep2Props) {
             saveStatus !== 'idle' && 'opacity-100'
           )}
         >
-          {saveStatus === 'saving' && '⟳ Sparar...'}
-          {saveStatus === 'saved' && '✓ Sparad'}
+          {saveStatus === 'saving' && <><Loader2 className="h-3 w-3 animate-spin" /> Sparar...</>}
+          {saveStatus === 'saved' && <><Check className="h-3 w-3" /> Sparad</>}
         </Badge>
       </div>
 
@@ -234,7 +235,7 @@ export function CvrfStep2({ analysis, onUpdate, readOnly }: CvrfStep2Props) {
                               className="shrink-0 text-destructive hover:text-destructive"
                               onClick={() => remove(index)}
                             >
-                              ✕
+                              <X className="h-4 w-4" />
                             </Button>
                           )}
                         </div>
@@ -294,7 +295,7 @@ export function CvrfStep2({ analysis, onUpdate, readOnly }: CvrfStep2Props) {
       {/* Gate 1 */}
       <Card className={cn(gate1Checked && 'border-primary/30 bg-primary/5')}>
         <CardContent className="flex items-start gap-4 py-5">
-          <span className={cn('text-lg mt-0.5 shrink-0', gate1Checked ? 'text-primary' : 'text-muted-foreground')}>🛡</span>
+          <ShieldCheck className={cn('h-5 w-5 mt-0.5 shrink-0', gate1Checked ? 'text-primary' : 'text-muted-foreground')} />
           <div className="flex-1 space-y-1">
             <p className="text-sm font-semibold">Gate 1 – Behovsanalys</p>
             <p className="text-xs text-muted-foreground">

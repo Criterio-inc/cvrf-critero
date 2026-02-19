@@ -22,6 +22,7 @@ import {
 import { toast } from 'sonner';
 import { useStakeholders, type StakeholderInsert } from '@/hooks/cvrf/useStakeholders';
 import { CvrfAnalysis } from '@/hooks/cvrf/useCvrfAnalysis';
+import { Users, X } from 'lucide-react';
 
 const CATEGORIES = [
   { value: 'brukare', label: 'Brukare' },
@@ -116,7 +117,7 @@ export function CvrfStep5({ analysis, onUpdate, readOnly }: CvrfStep5Props) {
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle className="text-base flex items-center gap-2">
-              <span>👥</span>
+              <Users className="h-4 w-4 text-primary" />
               Intressenter
               <Badge variant="secondary" className="text-xs">{stakeholders.length}</Badge>
             </CardTitle>
@@ -153,7 +154,7 @@ export function CvrfStep5({ analysis, onUpdate, readOnly }: CvrfStep5Props) {
                           className="shrink-0 text-destructive hover:text-destructive h-7 w-7"
                           onClick={() => handleDelete(s.id)}
                         >
-                          ✕
+                          <X className="h-4 w-4" />
                         </Button>
                       )}
                     </div>

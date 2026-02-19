@@ -5,6 +5,7 @@ import { useCvrfAnalyses } from '@/hooks/cvrf/useCvrfAnalyses';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Calculator, FileEdit, Play, CheckCircle2 } from 'lucide-react';
 
 const statusLabels: Record<string, string> = {
   draft: 'Utkast',
@@ -14,10 +15,10 @@ const statusLabels: Record<string, string> = {
 };
 
 const statusColors: Record<string, string> = {
-  draft: 'bg-yellow-100 text-yellow-800',
-  active: 'bg-blue-100 text-blue-800',
-  completed: 'bg-green-100 text-green-800',
-  archived: 'bg-gray-100 text-gray-800',
+  draft: 'bg-amber-100/80 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
+  active: 'bg-primary/10 text-primary',
+  completed: 'bg-emerald-100/80 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400',
+  archived: 'bg-muted text-muted-foreground',
 };
 
 export default function DashboardPage() {
@@ -31,44 +32,48 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold">Översikt</h1>
+        <h1 className="text-3xl font-bold">Oversikt</h1>
         <p className="text-muted-foreground mt-1">
-          Välkommen till CVRF Nyttokalkyl
+          Valkommen till CVRF Nyttokalkyl
         </p>
       </div>
 
       {/* KPI-kort */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Card>
-          <CardHeader className="pb-2">
+          <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardDescription>Totalt antal kalkyler</CardDescription>
+            <Calculator className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">{isLoading ? '–' : analyses.length}</div>
+            <div className="text-3xl font-bold">{isLoading ? '--' : analyses.length}</div>
           </CardContent>
         </Card>
         <Card>
-          <CardHeader className="pb-2">
+          <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardDescription>Utkast</CardDescription>
+            <FileEdit className="h-4 w-4 text-amber-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-yellow-600">{isLoading ? '–' : draftCount}</div>
+            <div className="text-3xl font-bold text-amber-600">{isLoading ? '--' : draftCount}</div>
           </CardContent>
         </Card>
         <Card>
-          <CardHeader className="pb-2">
+          <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardDescription>Aktiva</CardDescription>
+            <Play className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-blue-600">{isLoading ? '–' : activeCount}</div>
+            <div className="text-3xl font-bold text-primary">{isLoading ? '--' : activeCount}</div>
           </CardContent>
         </Card>
         <Card>
-          <CardHeader className="pb-2">
+          <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardDescription>Klara</CardDescription>
+            <CheckCircle2 className="h-4 w-4 text-emerald-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-green-600">{isLoading ? '–' : completedCount}</div>
+            <div className="text-3xl font-bold text-emerald-600">{isLoading ? '--' : completedCount}</div>
           </CardContent>
         </Card>
       </div>
@@ -90,10 +95,10 @@ export default function DashboardPage() {
           <Card>
             <CardContent className="py-8 text-center">
               <p className="text-muted-foreground mb-4">
-                Du har inga nyttokalkyler ännu.
+                Du har inga nyttokalkyler annu.
               </p>
               <Link href="/kalkyler">
-                <Button>Skapa din första kalkyl</Button>
+                <Button>Skapa din forsta kalkyl</Button>
               </Link>
             </CardContent>
           </Card>
@@ -101,7 +106,7 @@ export default function DashboardPage() {
           <div className="space-y-2">
             {recent.map((analysis) => (
               <Link key={analysis.id} href={`/kalkyler/${analysis.id}`}>
-                <Card className="hover:bg-slate-50 transition-colors cursor-pointer">
+                <Card className="hover:bg-muted/50 transition-colors cursor-pointer">
                   <CardContent className="flex items-center justify-between py-4">
                     <div>
                       <p className="font-medium">{analysis.title}</p>

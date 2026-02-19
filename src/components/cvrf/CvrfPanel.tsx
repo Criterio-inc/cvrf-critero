@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { useCvrfAnalysis, type CvrfAnalysis } from '@/hooks/cvrf/useCvrfAnalysis';
 import { cn } from '@/lib/utils';
+import { Check } from 'lucide-react';
 import { CvrfStep1 } from './CvrfStep1';
 import { CvrfStep2 } from './CvrfStep2';
 import { CvrfStep3 } from './CvrfStep3';
@@ -17,6 +18,8 @@ import { CvrfStep9 } from './CvrfStep9';
 import { CvrfStep10 } from './CvrfStep10';
 import { CvrfStep11 } from './CvrfStep11';
 import { CvrfStep12 } from './CvrfStep12';
+import { OnboardingGuide } from './OnboardingGuide';
+import { PhaseTooltip } from './PhaseTooltip';
 
 interface CvrfPanelProps {
   analysisId: string;
@@ -118,22 +121,24 @@ export function CvrfPanel({ analysisId, readOnly }: CvrfPanelProps) {
 
               return (
                 <div key={phase.id}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <Badge
-                      variant={isCompletedPhase ? 'default' : isActivePhase ? 'secondary' : 'outline'}
-                      className="text-xs"
-                    >
-                      Fas {phase.id}
-                    </Badge>
-                    <span className={cn(
-                      'text-sm font-semibold tracking-wide',
-                      isCompletedPhase && 'text-primary',
-                      isActivePhase && 'text-foreground',
-                      !isCompletedPhase && !isActivePhase && 'text-muted-foreground'
-                    )}>
-                      {phase.name}
-                    </span>
-                  </div>
+                  <PhaseTooltip phaseId={phase.id}>
+                    <div className="flex items-center gap-2 mb-3 cursor-help">
+                      <Badge
+                        variant={isCompletedPhase ? 'default' : isActivePhase ? 'secondary' : 'outline'}
+                        className="text-xs"
+                      >
+                        Fas {phase.id}
+                      </Badge>
+                      <span className={cn(
+                        'text-sm font-semibold tracking-wide',
+                        isCompletedPhase && 'text-primary',
+                        isActivePhase && 'text-foreground',
+                        !isCompletedPhase && !isActivePhase && 'text-muted-foreground'
+                      )}>
+                        {phase.name}
+                      </span>
+                    </div>
+                  </PhaseTooltip>
 
                   <div className="ml-4 space-y-1">
                     {phase.steps.map((step) => {
@@ -158,7 +163,7 @@ export function CvrfPanel({ analysisId, readOnly }: CvrfPanelProps) {
                           )}
                         >
                           {isCompleted ? (
-                            <span className="h-4 w-4 shrink-0 text-primary">✓</span>
+                            <Check className="h-4 w-4 shrink-0 text-primary" />
                           ) : isCurrent ? (
                             <span className="h-4 w-4 shrink-0 rounded-full bg-primary block" />
                           ) : (
@@ -179,8 +184,9 @@ export function CvrfPanel({ analysisId, readOnly }: CvrfPanelProps) {
           </CardContent>
         </Card>
 
-        {/* Step content — placeholder per steg */}
+        {/* Step content */}
         <div>
+          <OnboardingGuide step={activeView} />
           <StepContent
             step={activeView}
             analysis={analysis}

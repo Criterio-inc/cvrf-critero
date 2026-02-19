@@ -27,10 +27,10 @@ const statusLabels: Record<string, string> = {
 };
 
 const statusColors: Record<string, string> = {
-  draft: 'bg-yellow-100 text-yellow-800',
-  active: 'bg-blue-100 text-blue-800',
-  completed: 'bg-green-100 text-green-800',
-  archived: 'bg-gray-100 text-gray-800',
+  draft: 'bg-amber-100/80 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
+  active: 'bg-primary/10 text-primary',
+  completed: 'bg-emerald-100/80 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400',
+  archived: 'bg-muted text-muted-foreground',
 };
 
 export default function KalkylerPage() {
@@ -149,7 +149,7 @@ export default function KalkylerPage() {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((analysis) => (
             <Link key={analysis.id} href={`/kalkyler/${analysis.id}`}>
-              <Card className="hover:bg-slate-50 transition-colors cursor-pointer h-full">
+              <Card className="hover:bg-muted/50 transition-colors cursor-pointer h-full">
                 <CardContent className="pt-6 space-y-3">
                   <div className="flex items-start justify-between">
                     <h3 className="font-semibold text-base leading-tight">

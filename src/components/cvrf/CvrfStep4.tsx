@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { toast } from 'sonner';
 import { CvrfAnalysis } from '@/hooks/cvrf/useCvrfAnalysis';
+import { Ban } from 'lucide-react';
 
 interface CvrfStep4Props {
   analysis: CvrfAnalysis;
@@ -50,7 +51,7 @@ export function CvrfStep4({ analysis, onUpdate, readOnly }: CvrfStep4Props) {
       <Card>
         <CardHeader>
           <CardTitle className="text-base flex items-center gap-2">
-            <span>🚫</span>
+            <Ban className="h-4 w-4 text-muted-foreground" />
             Nollalternativ
           </CardTitle>
           <CardDescription>

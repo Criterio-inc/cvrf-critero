@@ -6,10 +6,11 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { LayoutDashboard, Calculator, LogOut } from 'lucide-react';
 
 const navItems = [
-  { href: '/dashboard', label: 'Översikt', icon: '📊' },
-  { href: '/kalkyler', label: 'Nyttokalkyler', icon: '🧮' },
+  { href: '/dashboard', label: 'Översikt', icon: LayoutDashboard },
+  { href: '/kalkyler', label: 'Nyttokalkyler', icon: Calculator },
 ];
 
 export function AppSidebar() {
@@ -23,9 +24,9 @@ export function AppSidebar() {
   };
 
   return (
-    <aside className="hidden md:flex w-64 flex-col border-r bg-slate-50/50 p-4">
+    <aside className="hidden md:flex w-64 flex-col border-r bg-sidebar p-4">
       {/* Logo */}
-      <div className="mb-8">
+      <div className="mb-8 pb-4 border-b border-border/50">
         <Link href="/dashboard" className="flex items-center gap-2">
           <span className="text-xl font-bold">CVRF</span>
           <span className="text-sm text-muted-foreground">Nyttokalkyl</span>
@@ -42,10 +43,10 @@ export function AppSidebar() {
               'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
               pathname === item.href || pathname.startsWith(item.href + '/')
                 ? 'bg-primary/10 text-primary'
-                : 'text-muted-foreground hover:bg-slate-100 hover:text-foreground'
+                : 'text-muted-foreground hover:bg-sidebar-accent hover:text-foreground'
             )}
           >
-            <span>{item.icon}</span>
+            <item.icon className="h-4 w-4 shrink-0" />
             {item.label}
           </Link>
         ))}
@@ -62,6 +63,7 @@ export function AppSidebar() {
           className="w-full justify-start text-muted-foreground"
           onClick={handleLogout}
         >
+          <LogOut className="h-4 w-4 mr-2" />
           Logga ut
         </Button>
       </div>
