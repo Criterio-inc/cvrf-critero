@@ -26,7 +26,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   if (!user) return null;
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <AppSidebar />
       <main className="flex-1 p-6 md:p-8 overflow-auto">
         {children}

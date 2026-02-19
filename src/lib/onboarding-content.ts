@@ -11,81 +11,81 @@ export interface PhaseGuidance {
 
 export const PHASE_GUIDANCE: Record<number, PhaseGuidance> = {
   1: {
-    title: 'Fas 1: FORSTA',
+    title: 'Fas 1: FÖRSTÅ',
     description:
-      'I denna fas definierar du problemet, satter mal och identifierar alternativ. Grunden for hela nyttokalkylen laggs har.',
+      'I denna fas definierar du problemet, sätter mål och identifierar alternativ. Grunden för hela nyttokalkylen läggs här.',
   },
   2: {
-    title: 'Fas 2: KARTLAGGA',
+    title: 'Fas 2: KARTLÄGGA',
     description:
-      'Kartlagg intressenter, beskriv nollalternativet och bygg ett nyttotrad som visar sambanden mellan aktiviteter och nyttor.',
+      'Kartlägg intressenter, beskriv nollalternativet och bygg ett nyttoträd som visar sambanden mellan aktiviteter och nyttor.',
   },
   3: {
-    title: 'Fas 3: BERAKNA',
+    title: 'Fas 3: BERÄKNA',
     description:
-      'Klassificera nyttor och kostnader, mata in vardeuppskattningar och berakna finansiella nyckeltal som NPV, BCR och SROI.',
+      'Klassificera nyttor och kostnader, mata in värdeuppskattningar och beräkna finansiella nyckeltal som NPV, BCR och SROI.',
   },
   4: {
     title: 'Fas 4: REALISERA',
     description:
-      'Planera hur nyttorna ska realiseras med ansvariga, uppfoljningspunkter och malvarden.',
+      'Planera hur nyttorna ska realiseras med ansvariga, uppföljningspunkter och målvärden.',
   },
   5: {
-    title: 'Fas 5: LARA',
+    title: 'Fas 5: LÄRA',
     description:
-      'Folj upp effektmalning, dokumentera lardomar och skapa slutrapporten.',
+      'Följ upp effektmätning, dokumentera lärdomar och skapa slutrapporten.',
   },
 };
 
 export const STEP_GUIDANCE: Record<number, StepGuidance> = {
   1: {
-    title: 'Behovsanalys & Mal',
+    title: 'Behovsanalys & Mål',
     description:
-      'Borja med att beskriva problemet eller behovet som driver forandringen. Definiera SMART-mal som gor det mojligt att mata framgang.',
+      'Börja med att beskriva problemet eller behovet som driver förändringen. Definiera SMART-mål som gör det möjligt att mäta framgång.',
     tips: [
       'Var specifik om problemets konsekvenser',
       'Koppla till organisationens strategi',
-      'Satt malbara SMART-mal med tidsram',
+      'Sätt mätbara SMART-mål med tidsram',
     ],
   },
   2: {
     title: 'Strategisk koppling',
     description:
-      'Beskriv nollalternativet (vad hander om inget gors) och definiera de alternativ som ska utredas.',
+      'Beskriv nollalternativet (vad händer om inget görs) och definiera de alternativ som ska utredas.',
     tips: [
-      'Nollalternativet ar din referenspunkt',
+      'Nollalternativet är din referenspunkt',
       'Beskriv minst ett realistiskt alternativ',
-      'Inklura bade for- och nackdelar per alternativ',
+      'Inkludera både för- och nackdelar per alternativ',
     ],
   },
   3: {
     title: 'Intressentanalys',
     description:
-      'Identifiera alla som paverkas av eller kan paverka projektet. Bedom deras inflytande och intresse.',
+      'Identifiera alla som påverkas av eller kan påverka projektet. Bedöm deras inflytande och intresse.',
     tips: [
-      'Tank brett: brukare, medarbetare, ledning, samhalle',
-      'Bedom bade inflytande (1-5) och intresse (1-5)',
+      'Tänk brett: brukare, medarbetare, ledning, samhälle',
+      'Bedöm både inflytande (1–5) och intresse (1–5)',
       'Planera hur varje intressent ska engageras',
     ],
   },
   4: {
     title: 'Nollalternativ',
     description:
-      'Fordjupa beskrivningen av vad som hander om projektet inte genomfors. Detta ar basen som alla nyttor mats mot.',
+      'Fördjupa beskrivningen av vad som händer om projektet inte genomförs. Detta är basen som alla nyttor mäts mot.',
     tips: [
-      'Beskriv konsekvenser over tid',
+      'Beskriv konsekvenser över tid',
       'Inkludera dolda kostnader av att inte agera',
-      'Tank pa regulatoriska och juridiska aspekter',
+      'Tänk på regulatoriska och juridiska aspekter',
     ],
   },
   5: {
-    title: 'Nyttotrad (Value Map)',
+    title: 'Nyttoträd (Value Map)',
     description:
-      'Bygg en visuell karta over sambanden fran aktiviteter via effekter till nyttor och mal.',
+      'Bygg en visuell karta över sambanden från aktiviteter via effekter till nyttor och mål.',
     tips: [
-      'Borja med aktiviteterna (vad ska goras)',
-      'Koppla till effekter (vad uppnas)',
-      'Avsluta med nyttor och mal (vardet)',
+      'Börja med aktiviteterna (vad ska göras)',
+      'Koppla till effekter (vad uppnås)',
+      'Avsluta med nyttor och mål (värdet)',
     ],
   },
   6: {
@@ -93,68 +93,68 @@ export const STEP_GUIDANCE: Record<number, StepGuidance> = {
     description:
       'Klassificera alla kostnader i kalkylen efter typ och tidshorisont.',
     tips: [
-      'Urskilj investering fran driftskostnader',
-      'Glommeji alternativkostnader',
-      'Koppla till budgetposter om mojligt',
+      'Urskilj investering från driftskostnader',
+      'Glöm ej alternativkostnader',
+      'Koppla till budgetposter om möjligt',
     ],
   },
   7: {
-    title: 'Nyttor & varden',
+    title: 'Nyttor & värden',
     description:
-      'Uppskatta det ekonomiska vardet av varje nytta med pessimistiskt, troligt och optimistiskt scenario.',
+      'Uppskatta det ekonomiska värdet av varje nytta med pessimistiskt, troligt och optimistiskt scenario.',
     tips: [
-      'Anvand tre-punkts-skattning for battre precision',
+      'Använd tre-punkts-skattning för bättre precision',
       'Dokumentera kalkylantaganden',
-      'Ange datakalla for trovardighet',
+      'Ange datakälla för trovärdighet',
     ],
   },
   8: {
-    title: 'Kalkyl & kanslighet',
+    title: 'Kalkyl & känslighet',
     description:
-      'Berakna NPV, BCR, IRR och SROI. Kor kanslighetsanalys for att forsta riskerna i kalkylen.',
+      'Beräkna NPV, BCR, IRR och SROI. Kör känslighetsanalys för att förstå riskerna i kalkylen.',
     tips: [
-      'NPV > 0 innebar att nyttan overstiger kostnaden',
-      'BCR > 1.0 ar en bra indikator',
-      'Testa olika diskonteringsrantor',
+      'NPV > 0 innebär att nyttan överstiger kostnaden',
+      'BCR > 1.0 är en bra indikator',
+      'Testa olika diskonteringsräntor',
     ],
   },
   9: {
     title: 'Realiseringsplan',
     description:
-      'Utse nyttoansvariga och satt baslinjer, malvarden och uppfoljningsfrekvens for varje nytta.',
+      'Utse nyttoansvariga och sätt baslinjer, målvärden och uppföljningsfrekvens för varje nytta.',
     tips: [
-      'Varje nytta bor ha en ansvarig person',
-      'Satt malbara KPI:er',
-      'Koppla till projektets effektmal',
+      'Varje nytta bör ha en ansvarig person',
+      'Sätt mätbara KPI:er',
+      'Koppla till projektets effektmål',
     ],
   },
   10: {
-    title: 'Uppfoljningspunkter',
+    title: 'Uppföljningspunkter',
     description:
-      'Planera kontrollpunkter for att folja upp att nyttorna realiseras enligt plan.',
+      'Planera kontrollpunkter för att följa upp att nyttorna realiseras enligt plan.',
     tips: [
-      'Lagg kontrollpunkter vid viktiga milstolpar',
-      'Dokumentera avvikelser och atgarder',
-      'Folj upp bade under och efter projektet',
+      'Lägg kontrollpunkter vid viktiga milstolpar',
+      'Dokumentera avvikelser och åtgärder',
+      'Följ upp både under och efter projektet',
     ],
   },
   11: {
-    title: 'Effektmatning',
+    title: 'Effektmätning',
     description:
-      'Mat och dokumentera den faktiska realiseringen av nyttorna mot planerade varden.',
+      'Mät och dokumentera den faktiska realiseringen av nyttorna mot planerade värden.',
     tips: [
-      'Jamfor faktiskt utfall mot planerat',
+      'Jämför faktiskt utfall mot planerat',
       'Analysera avvikelser',
-      'Synka matdata till effektmal',
+      'Synka mätdata till effektmål',
     ],
   },
   12: {
-    title: 'Lardomar & rapport',
+    title: 'Lärdomar & rapport',
     description:
-      'Sammanfatta lardomar fran projektet och exportera den fardiga nyttokalkylen.',
+      'Sammanfatta lärdomar från projektet och exportera den färdiga nyttokalkylen.',
     tips: [
-      'Dokumentera bade framgangar och misslyckanden',
-      'Ge rekommendationer for framtida projekt',
+      'Dokumentera både framgångar och misslyckanden',
+      'Ge rekommendationer för framtida projekt',
       'Exportera som PDF eller Excel',
     ],
   },

@@ -55,32 +55,32 @@ export function CvrfStep4({ analysis, onUpdate, readOnly }: CvrfStep4Props) {
             Nollalternativ
           </CardTitle>
           <CardDescription>
-            Beskriv vad som hander om projektet inte genomfors. Nollalternativet ar
-            referenspunkten som projektets nyttor och kostnader jamfors mot.
+            Beskriv vad som händer om projektet inte genomförs. Nollalternativet är
+            referenspunkten som projektets nyttor och kostnader jämförs mot.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <Alert>
             <AlertDescription>
-              <span className="font-medium">Tips:</span> Ett bra nollalternativ beskriver nulagen och hur det forvantas utvecklas utan
-              forandring -- inklusive risker, okande kostnader och missade mojligheter.
+              <span className="font-medium">Tips:</span> Ett bra nollalternativ beskriver nulagen och hur det förväntas utvecklas utan
+              förändring -- inklusive risker, ökande kostnader och missade möjligheter.
             </AlertDescription>
           </Alert>
 
           <div className="space-y-2">
             <label className="text-sm font-medium">
-              Vad hander om vi inte genomfor projektet?
+              Vad händer om vi inte genomför projektet?
             </label>
             <Textarea
               value={nullAlt}
               onChange={(e) => setNullAlt(e.target.value)}
               onBlur={handleSave}
               disabled={readOnly}
-              placeholder={'Beskriv nulagen och den forvantade utvecklingen utan projektet. Tank pa:\n• Vilka problem kvarstar eller forvarras?\n• Vilka kostnader uppstar av att inte agera?\n• Finns det regulatoriska krav som inte uppfylls?\n• Hur paverkas medarbetare, brukare och verksamheten?'}
+              placeholder={'Beskriv nuläget och den förväntade utvecklingen utan projektet. Tänk på:\n• Vilka problem kvarstår eller förvärras?\n• Vilka kostnader uppstår av att inte agera?\n• Finns det regulatoriska krav som inte uppfylls?\n• Hur påverkas medarbetare, brukare och verksamheten?'}
               className="min-h-[200px]"
             />
             <p className="text-xs text-muted-foreground">
-              {nullAlt.length > 0 ? `${nullAlt.length} tecken` : 'Inga tecken annu'}
+              {nullAlt.length > 0 ? `${nullAlt.length} tecken` : 'Inga tecken ännu'}
               {isSaving && ' · Sparar...'}
             </p>
           </div>
@@ -90,29 +90,29 @@ export function CvrfStep4({ analysis, onUpdate, readOnly }: CvrfStep4Props) {
       {/* Guiding questions */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Reflektionsfragor</CardTitle>
+          <CardTitle className="text-base">Reflektionsfrågor</CardTitle>
         </CardHeader>
         <CardContent>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li className="flex gap-2">
               <span className="shrink-0">1.</span>
-              <span>Vilka risker och kostnader uppstar om inget forandras?</span>
+              <span>Vilka risker och kostnader uppstår om inget förändras?</span>
             </li>
             <li className="flex gap-2">
               <span className="shrink-0">2.</span>
-              <span>Finns det lagar, regler eller avtal som driver behovet av forandring?</span>
+              <span>Finns det lagar, regler eller avtal som driver behovet av förändring?</span>
             </li>
             <li className="flex gap-2">
               <span className="shrink-0">3.</span>
-              <span>Hur paverkas intressenterna om nulagen kvarstar?</span>
+              <span>Hur påverkas intressenterna om nuläget kvarstår?</span>
             </li>
             <li className="flex gap-2">
               <span className="shrink-0">4.</span>
-              <span>Kommer befintliga system eller processer att bli dyrare att underhalla?</span>
+              <span>Kommer befintliga system eller processer att bli dyrare att underhålla?</span>
             </li>
             <li className="flex gap-2">
               <span className="shrink-0">5.</span>
-              <span>Finns det alternativa losningar som inte kraver ett helt projekt?</span>
+              <span>Finns det alternativa lösningar som inte kräver ett helt projekt?</span>
             </li>
           </ul>
         </CardContent>
@@ -125,7 +125,7 @@ export function CvrfStep4({ analysis, onUpdate, readOnly }: CvrfStep4Props) {
             ← Tillbaka
           </Button>
           <Button onClick={handleNext}>
-            Nasta steg →
+            Nästa steg →
           </Button>
         </div>
       )}

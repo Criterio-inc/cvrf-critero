@@ -32,9 +32,9 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold">Oversikt</h1>
+        <h1 className="text-3xl font-bold">Översikt</h1>
         <p className="text-muted-foreground mt-1">
-          Valkommen till CVRF Nyttokalkyl
+          Välkommen till CVRF Nyttokalkyl
         </p>
       </div>
 
@@ -95,10 +95,10 @@ export default function DashboardPage() {
           <Card>
             <CardContent className="py-8 text-center">
               <p className="text-muted-foreground mb-4">
-                Du har inga nyttokalkyler annu.
+                Du har inga nyttokalkyler ännu.
               </p>
               <Link href="/kalkyler">
-                <Button>Skapa din forsta kalkyl</Button>
+                <Button>Skapa din första kalkyl</Button>
               </Link>
             </CardContent>
           </Card>

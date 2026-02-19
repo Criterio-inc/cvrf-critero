@@ -15,28 +15,28 @@ import { cn } from '@/lib/utils';
 
 const BENEFIT_CATEGORIES = [
   { value: 'financial', label: 'Finansiell' },
-  { value: 'redistribution', label: 'Omfordelning' },
+  { value: 'redistribution', label: 'Omfördelning' },
   { value: 'quality', label: 'Kvalitet' },
-  { value: 'environmental', label: 'Miljo' },
-  { value: 'societal', label: 'Samhallsnytta' },
+  { value: 'environmental', label: 'Miljö' },
+  { value: 'societal', label: 'Samhällsnytta' },
 ] as const;
 
 const TIME_PERSPECTIVES = [
-  { value: 'short', label: 'Kort (0-2 ar)' },
-  { value: 'medium', label: 'Medium (2-5 ar)' },
-  { value: 'long', label: 'Lang (5+ ar)' },
+  { value: 'short', label: 'Kort (0-2 år)' },
+  { value: 'medium', label: 'Medium (2-5 år)' },
+  { value: 'long', label: 'Lång (5+ år)' },
 ] as const;
 
 const CONFIDENCE_LEVELS = [
-  { value: 'high', label: 'Hog', color: 'text-emerald-600 dark:text-emerald-400' },
+  { value: 'high', label: 'Hög', color: 'text-emerald-600 dark:text-emerald-400' },
   { value: 'medium', label: 'Medel', color: 'text-amber-600 dark:text-amber-400' },
-  { value: 'low', label: 'Lag', color: 'text-red-600 dark:text-red-400' },
+  { value: 'low', label: 'Låg', color: 'text-red-600 dark:text-red-400' },
 ] as const;
 
 const COST_TYPES = [
   { value: 'investment', label: 'Investering' },
   { value: 'operational', label: 'Drift' },
-  { value: 'change', label: 'Forandring' },
+  { value: 'change', label: 'Förändring' },
   { value: 'opportunity', label: 'Alternativkostnad' },
   { value: 'decommission', label: 'Avveckling' },
 ] as const;
@@ -78,7 +78,7 @@ export function CvrfStep6({ analysis, onUpdate, readOnly }: CvrfStep6Props) {
       <div className="space-y-6">
         <Alert>
           <AlertDescription>
-            Du behover forst skapa nyttor och kostnader i Value Map (Steg 5) innan du kan klassificera dem.
+            Du behöver först skapa nyttor och kostnader i Value Map (Steg 5) innan du kan klassificera dem.
           </AlertDescription>
         </Alert>
         {!readOnly && (
@@ -87,7 +87,7 @@ export function CvrfStep6({ analysis, onUpdate, readOnly }: CvrfStep6Props) {
               ← Tillbaka
             </Button>
             <Button onClick={handleNext}>
-              Nasta steg →
+              Nästa steg →
             </Button>
           </div>
         )}
@@ -187,7 +187,7 @@ export function CvrfStep6({ analysis, onUpdate, readOnly }: CvrfStep6Props) {
               </div>
             )}
             {benefitCounts.length === 0 && costCounts.length === 0 && (
-              <p className="text-sm text-muted-foreground">Inga klassificeringar gjorda annu.</p>
+              <p className="text-sm text-muted-foreground">Inga klassificeringar gjorda ännu.</p>
             )}
           </div>
         </CardContent>
@@ -200,7 +200,7 @@ export function CvrfStep6({ analysis, onUpdate, readOnly }: CvrfStep6Props) {
             ← Tillbaka
           </Button>
           <Button onClick={handleNext}>
-            Nasta steg →
+            Nästa steg →
           </Button>
         </div>
       )}
@@ -250,7 +250,7 @@ function BenefitNodeCard({ node, stakeholders, onUpdate, readOnly }: BenefitNode
               disabled={readOnly}
             >
               <SelectTrigger className="h-8 text-xs">
-                <SelectValue placeholder="Valj...">
+                <SelectValue placeholder="Välj...">
                   {confidenceItem && (
                     <span className={confidenceItem.color}>{confidenceItem.label}</span>
                   )}
@@ -273,7 +273,7 @@ function BenefitNodeCard({ node, stakeholders, onUpdate, readOnly }: BenefitNode
               disabled={readOnly}
             >
               <SelectTrigger className="h-8 text-xs">
-                <SelectValue placeholder="Valj..." />
+                <SelectValue placeholder="Välj..." />
               </SelectTrigger>
               <SelectContent>
                 {stakeholders.map((s) => (
@@ -341,7 +341,7 @@ function SelectField({ label, value, options, onChange, disabled }: SelectFieldP
       <p className="text-xs text-muted-foreground">{label}</p>
       <Select value={value ?? ''} onValueChange={onChange} disabled={disabled}>
         <SelectTrigger className="h-8 text-xs">
-          <SelectValue placeholder="Valj..." />
+          <SelectValue placeholder="Välj..." />
         </SelectTrigger>
         <SelectContent>
           {options.map((o) => (

@@ -20,22 +20,22 @@ export function CvrfStep3({ analysis, onUpdate, readOnly }: CvrfStep3Props) {
       <Card>
         <CardHeader>
           <CardTitle className="text-base">
-            Nyttotrad (Value Map)
+            Nyttoträd (Value Map)
           </CardTitle>
           <CardDescription className="mt-1">
-            Kartlagg projektets forandringskedja: fran aktiviteter via effekter till nyttor och mal.
-            Dra kopplingar mellan noder for att visa samband.
+            Kartlägg projektets förändringskedja: från aktiviteter via effekter till nyttor och mål.
+            Dra kopplingar mellan noder för att visa samband.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <Network className="h-12 w-12 text-primary mb-4" />
             <h3 className="text-lg font-semibold mb-2">
-              Nyttotrad -- Value Map kommer implementeras
+              Nyttoträd — Value Map kommer implementeras
             </h3>
             <p className="text-muted-foreground max-w-md">
-              Har kommer du kunna bygga ett visuellt nyttotrad som kopplar aktiviteter,
-              effekter och nyttor till varandra. Denna funktion ar under utveckling.
+              Här kommer du kunna bygga ett visuellt nyttoträd som kopplar aktiviteter,
+              effekter och nyttor till varandra. Denna funktion är under utveckling.
             </p>
           </div>
         </CardContent>
@@ -48,7 +48,7 @@ export function CvrfStep3({ analysis, onUpdate, readOnly }: CvrfStep3Props) {
             ← Tillbaka
           </Button>
           <Button onClick={handleNext}>
-            Nasta steg →
+            Nästa steg →
           </Button>
         </div>
       )}

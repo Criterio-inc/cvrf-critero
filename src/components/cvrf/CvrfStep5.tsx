@@ -85,7 +85,7 @@ export function CvrfStep5({ analysis, onUpdate, readOnly }: CvrfStep5Props) {
       form.reset();
       setDialogOpen(false);
     } catch {
-      toast.error('Kunde inte lagga till');
+      toast.error('Kunde inte lägga till');
     }
   };
 
@@ -123,7 +123,7 @@ export function CvrfStep5({ analysis, onUpdate, readOnly }: CvrfStep5Props) {
             </CardTitle>
             {!readOnly && (
               <Button variant="outline" size="sm" onClick={() => setDialogOpen(true)}>
-                + Lagg till intressent
+                + Lägg till intressent
               </Button>
             )}
           </div>
@@ -131,7 +131,7 @@ export function CvrfStep5({ analysis, onUpdate, readOnly }: CvrfStep5Props) {
         <CardContent>
           {stakeholders.length === 0 ? (
             <p className="text-sm text-muted-foreground text-center py-8">
-              Inga intressenter tillagda annu. Klicka &quot;Lagg till intressent&quot; for att borja.
+              Inga intressenter tillagda ännu. Klicka &quot;Lägg till intressent&quot; för att börja.
             </p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -177,7 +177,7 @@ export function CvrfStep5({ analysis, onUpdate, readOnly }: CvrfStep5Props) {
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle>Lagg till intressent</DialogTitle>
+            <DialogTitle>Lägg till intressent</DialogTitle>
           </DialogHeader>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -200,7 +200,7 @@ export function CvrfStep5({ analysis, onUpdate, readOnly }: CvrfStep5Props) {
                     <FormLabel>Kategori</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger><SelectValue placeholder="Valj kategori" /></SelectTrigger>
+                        <SelectTrigger><SelectValue placeholder="Välj kategori" /></SelectTrigger>
                       </FormControl>
                       <SelectContent>
                         {CATEGORIES.map((c) => (
@@ -277,7 +277,7 @@ export function CvrfStep5({ analysis, onUpdate, readOnly }: CvrfStep5Props) {
                   <Button type="button" variant="outline">Avbryt</Button>
                 </DialogClose>
                 <Button type="submit" disabled={createStakeholder.isPending}>
-                  {createStakeholder.isPending ? 'Sparar...' : 'Lagg till'}
+                  {createStakeholder.isPending ? 'Sparar...' : 'Lägg till'}
                 </Button>
               </DialogFooter>
             </form>
@@ -292,7 +292,7 @@ export function CvrfStep5({ analysis, onUpdate, readOnly }: CvrfStep5Props) {
             ← Tillbaka
           </Button>
           <Button onClick={handleNext}>
-            Nasta steg →
+            Nästa steg →
           </Button>
         </div>
       )}
