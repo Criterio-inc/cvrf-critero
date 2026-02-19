@@ -2,10 +2,21 @@
 
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useCvrfAnalysis, type CvrfAnalysis } from '@/hooks/cvrf/useCvrfAnalysis';
 import { cn } from '@/lib/utils';
+import { CvrfStep1 } from './CvrfStep1';
+import { CvrfStep2 } from './CvrfStep2';
+import { CvrfStep3 } from './CvrfStep3';
+import { CvrfStep4 } from './CvrfStep4';
+import { CvrfStep5 } from './CvrfStep5';
+import { CvrfStep6 } from './CvrfStep6';
+import { CvrfStep7 } from './CvrfStep7';
+import { CvrfStep8 } from './CvrfStep8';
+import { CvrfStep9 } from './CvrfStep9';
+import { CvrfStep10 } from './CvrfStep10';
+import { CvrfStep11 } from './CvrfStep11';
+import { CvrfStep12 } from './CvrfStep12';
 
 interface CvrfPanelProps {
   analysisId: string;
@@ -195,54 +206,28 @@ function StepContent({
   onUpdate: (updates: Partial<CvrfAnalysis>) => Promise<any>;
   readOnly?: boolean;
 }) {
-  // Placeholder — wizard steps will be migrated next
-  const stepLabel = STEP_LABELS[step] ?? `Steg ${step}`;
+  const props = { analysis, onUpdate, readOnly };
 
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>
-          Steg {step}: {stepLabel}
-        </CardTitle>
-        <CardDescription>
-          Denna komponent migreras snart från Projektkompassen.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <p className="text-muted-foreground">
-          Wizard-steget för &quot;{stepLabel}&quot; kommer implementeras härnäst.
-        </p>
-
-        {/* Navigation buttons */}
-        <div className="flex justify-between pt-4 border-t">
-          {step > 1 && (
-            <Button
-              variant="outline"
-              onClick={() => onUpdate({ current_step: step - 1, current_phase: getPhaseForStep(step - 1) })}
-              disabled={readOnly}
-            >
-              ← Föregående
-            </Button>
-          )}
-          {step < 12 && (
-            <Button
-              className="ml-auto"
-              onClick={() => onUpdate({ current_step: step + 1, current_phase: getPhaseForStep(step + 1) })}
-              disabled={readOnly}
-            >
-              Nästa →
-            </Button>
-          )}
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function getPhaseForStep(step: number): number {
-  if (step <= 2) return 1;
-  if (step <= 5) return 2;
-  if (step <= 8) return 3;
-  if (step <= 10) return 4;
-  return 5;
+  switch (step) {
+    case 1:  return <CvrfStep1  {...props} />;
+    case 2:  return <CvrfStep2  {...props} />;
+    case 3:  return <CvrfStep3  {...props} />;
+    case 4:  return <CvrfStep4  {...props} />;
+    case 5:  return <CvrfStep5  {...props} />;
+    case 6:  return <CvrfStep6  {...props} />;
+    case 7:  return <CvrfStep7  {...props} />;
+    case 8:  return <CvrfStep8  {...props} />;
+    case 9:  return <CvrfStep9  {...props} />;
+    case 10: return <CvrfStep10 {...props} />;
+    case 11: return <CvrfStep11 {...props} />;
+    case 12: return <CvrfStep12 {...props} />;
+    default:
+      return (
+        <Card>
+          <CardContent className="py-8 text-center text-muted-foreground">
+            Ok\u00e4nt steg: {step}
+          </CardContent>
+        </Card>
+      );
+  }
 }
