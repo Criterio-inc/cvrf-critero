@@ -30,53 +30,53 @@ const features = [
     icon: Workflow,
     title: "12-stegs wizard",
     description:
-      "Guidad process fr\u00e5n problembeskrivning till f\u00e4rdig rapport \u2013 steg f\u00f6r steg med inbyggd kvalitetss\u00e4kring.",
+      "Guidad process från problembeskrivning till färdig rapport – steg för steg med inbyggd kvalitetssäkring.",
   },
   {
     icon: Network,
-    title: "Interaktivt nyttotr\u00e4d",
+    title: "Interaktivt nyttoträd",
     description:
-      "Visualisera och koppla samband mellan aktiviteter, effekter och nyttor i en dynamisk tr\u00e4dstruktur.",
+      "Visualisera och koppla samband mellan aktiviteter, effekter och nyttor i en dynamisk trädstruktur.",
   },
   {
     icon: TrendingUp,
     title: "Finansiella KPI:er",
     description:
-      "NPV, BCR, IRR, SROI och payback ber\u00e4knas automatiskt utifr\u00e5n dina inmatade v\u00e4rden.",
+      "NPV, BCR, IRR, SROI och payback beräknas automatiskt utifrån dina inmatade värden.",
   },
   {
     icon: Shield,
     title: "5 beslutsgrindar",
     description:
-      "Strukturerade kontrollpunkter s\u00e4kerst\u00e4ller att r\u00e4tt beslut fattas vid r\u00e4tt tidpunkt i processen.",
+      "Strukturerade kontrollpunkter säkerställer att rätt beslut fattas vid rätt tidpunkt i processen.",
   },
 ];
 
 const phases = [
   {
     icon: Lightbulb,
-    label: "F\u00d6RST\u00c5",
-    description: "Definiera problem och m\u00e5l",
+    label: "FÖRSTÅ",
+    description: "Definiera problem och mål",
   },
   {
     icon: Search,
-    label: "KARTL\u00c4GGA",
+    label: "KARTLÄGGA",
     description: "Identifiera nyttor och kostnader",
   },
   {
     icon: Calculator,
-    label: "BER\u00c4KNA",
-    description: "Kvantifiera och v\u00e4rdera",
+    label: "BERÄKNA",
+    description: "Kvantifiera och värdera",
   },
   {
     icon: Rocket,
     label: "REALISERA",
-    description: "Genomf\u00f6r och f\u00f6lj upp",
+    description: "Genomför och följ upp",
   },
   {
     icon: GraduationCap,
-    label: "L\u00c4RA",
-    description: "Utv\u00e4rdera och f\u00f6rb\u00e4ttra",
+    label: "LÄRA",
+    description: "Utvärdera och förbättra",
   },
 ];
 
@@ -85,6 +85,33 @@ const stats = [
   { value: "5", label: "Beslutsgrindar", icon: Target },
   { value: "4+", label: "Finansiella KPI:er", icon: BarChart3 },
   { value: "PDF", label: "Exportera rapport", icon: FileDown },
+];
+
+const highlights = [
+  "NPV, BCR, IRR och SROI i realtid",
+  "Intressenthantering och nyttoregister",
+  "Exportera till PDF med ett klick",
+  "Fristående kalkyler eller kopplade till projekt",
+  "Känslighetsanalys och scenarioplanering",
+  "Automatisk uppföljning mot effektmål",
+];
+
+const audiences = [
+  {
+    icon: Users,
+    title: "Projektledare",
+    text: "Få en tydlig bild av förväntade nyttor och kostnader innan projektet startar – och följ upp under hela livscykeln.",
+  },
+  {
+    icon: BarChart3,
+    title: "Ekonomer och controllers",
+    text: "Professionella finansiella nyckeltal beräknade enligt vedertagen metodik. Exportera snygga rapporter till beslutsfattare.",
+  },
+  {
+    icon: Target,
+    title: "Beslutsfattare",
+    text: "Få ett strukturerat beslutsunderlag med tydliga effektmål, beslutsgrindar och nyttoregister.",
+  },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -112,7 +139,7 @@ export default function Home() {
             </Button>
             <Button asChild size="sm">
               <Link href="/register">
-                Kom ig\u00e5ng
+                {"Kom igång"}
                 <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </Button>
@@ -130,18 +157,16 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6 pb-24 pt-20 text-center sm:pt-28 sm:pb-32">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
             <BarChart3 className="h-4 w-4" />
-            Kostnadsnyttoanalys f\u00f6r offentlig sektor
+            {"Kostnadsnyttoanalys för offentlig sektor"}
           </div>
 
           <h1 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
-            Fr\u00e5n id\u00e9 till{" "}
+            {"Från idé till "}
             <span className="text-primary">evidensbaserat beslut</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            CVRF Nyttokalkyl guidar dig genom hela nyttorealiseringsprocessen
-            {" \u2013 "}fr\u00e5n f\u00f6rsta problembeskrivningen till en komplett rapport
-            med NPV, BCR, IRR och SROI.
+            {"CVRF Nyttokalkyl guidar dig genom hela nyttorealiseringsprocessen – från första problembeskrivningen till en komplett rapport med NPV, BCR, IRR och SROI."}
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -162,7 +187,7 @@ export default function Home() {
           </div>
 
           <p className="mt-4 text-sm text-muted-foreground">
-            Ingen kreditkortsuppgift kr\u00e4vs. Kom ig\u00e5ng p\u00e5 n\u00e5gra minuter.
+            {"Ingen kreditkortsuppgift krävs. Kom igång på några minuter."}
           </p>
         </div>
       </section>
@@ -172,11 +197,10 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Allt du beh\u00f6ver f\u00f6r en komplett nyttokalkyl
+              {"Allt du behöver för en komplett nyttokalkyl"}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Ett strukturerat ramverk som s\u00e4kerst\u00e4ller kvalitet i varje steg
-              av analysen.
+              {"Ett strukturerat ramverk som säkerställer kvalitet i varje steg av analysen."}
             </p>
           </div>
 
@@ -206,11 +230,10 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Fem faser f\u00f6r lyckad nyttorealisering
+              {"Fem faser för lyckad nyttorealisering"}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              CVRF-modellen bygger p\u00e5 en bepr\u00f6vad metodik i fem faser som
-              s\u00e4kerst\u00e4ller att nyttan verkligen realiseras.
+              {"CVRF-modellen bygger på en beprövad metodik i fem faser som säkerställer att nyttan verkligen realiseras."}
             </p>
           </div>
 
@@ -271,11 +294,10 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Byggt f\u00f6r professionella nyttokalkyler
+              {"Byggt för professionella nyttokalkyler"}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Allt \u00e4r samlat i ett och samma verktyg {"\u2013"} ingen mer
-              kalkylbladskaos.
+              {"Allt är samlat i ett och samma verktyg – ingen mer kalkylbladskaos."}
             </p>
           </div>
 
@@ -304,14 +326,7 @@ export default function Home() {
           <div className="mx-auto mt-12 max-w-3xl">
             <Card className="border-primary/20 bg-card">
               <CardContent className="grid gap-4 pt-6 sm:grid-cols-2">
-                {[
-                  "NPV, BCR, IRR och SROI i realtid",
-                  "Intressenthantering och nyttoregister",
-                  "Exportera till PDF med ett klick",
-                  "Frist\u00e5ende kalkyler eller kopplade till projekt",
-                  "K\u00e4nslighetsanalys och scenarioplanering",
-                  "Automatisk uppf\u00f6ljning mot effektm\u00e5l",
-                ].map((text) => (
+                {highlights.map((text) => (
                   <div key={text} className="flex items-start gap-2">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                     <span className="text-sm">{text}</span>
@@ -328,32 +343,15 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              F\u00f6r alla som arbetar med nyttorealisering
+              {"För alla som arbetar med nyttorealisering"}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Oavsett om du \u00e4r projektledare, controller eller IT-strateg {"\u2013"}{" "}
-              CVRF Nyttokalkyl ger dig r\u00e4tt verktyg.
+              {"Oavsett om du är projektledare, controller eller IT-strateg – CVRF Nyttokalkyl ger dig rätt verktyg."}
             </p>
           </div>
 
           <div className="mt-14 grid gap-6 sm:grid-cols-3">
-            {[
-              {
-                icon: Users,
-                title: "Projektledare",
-                text: "F\u00e5 en tydlig bild av f\u00f6rv\u00e4ntade nyttor och kostnader innan projektet startar \u2013 och f\u00f6lj upp under hela livscykeln.",
-              },
-              {
-                icon: BarChart3,
-                title: "Ekonomer och controllers",
-                text: "Professionella finansiella nyckeltal ber\u00e4knade enligt vedertagen metodik. Exportera snygga rapporter till beslutsfattare.",
-              },
-              {
-                icon: Target,
-                title: "Beslutsfattare",
-                text: "F\u00e5 ett strukturerat beslutsunderlag med tydliga effektm\u00e5l, beslutsgrindar och nyttoregister.",
-              },
-            ].map((item) => (
+            {audiences.map((item) => (
               <Card
                 key={item.title}
                 className="border-border/50 bg-card/80 transition-shadow hover:shadow-md"
@@ -377,11 +375,10 @@ export default function Home() {
       <section className="border-t border-border/40 bg-primary/5">
         <div className="mx-auto max-w-4xl px-6 py-20 text-center sm:py-28">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Redo att skapa din f\u00f6rsta nyttokalkyl?
+            {"Redo att skapa din första nyttokalkyl?"}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-            B\u00f6rja anv\u00e4nda CVRF Nyttokalkyl idag och ta kontroll \u00f6ver
-            nyttorealiseringen i dina projekt.
+            {"Börja använda CVRF Nyttokalkyl idag och ta kontroll över nyttorealiseringen i dina projekt."}
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild size="lg" className="px-8 text-base">
@@ -412,8 +409,7 @@ export default function Home() {
             <span className="text-sm font-medium">CVRF Nyttokalkyl</span>
           </div>
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} CVRF Nyttokalkyl. Alla
-            r\u00e4ttigheter f\u00f6rbeh\u00e5llna.
+            {"© "}{new Date().getFullYear()}{" CVRF Nyttokalkyl. Alla rättigheter förbehållna."}
           </p>
         </div>
       </footer>
