@@ -40,9 +40,9 @@ const features = [
   },
   {
     icon: TrendingUp,
-    title: "Finansiella KPI:er",
+    title: "Finansiella nyckeltal",
     description:
-      "NPV, BCR, IRR, SROI och payback beräknas automatiskt utifrån dina inmatade värden.",
+      "Nuvärde (NPV), nyttokostnadskvot (BCR), internränta (IRR), social avkastning (SROI) och payback-tid beräknas automatiskt.",
   },
   {
     icon: Shield,
@@ -83,12 +83,12 @@ const phases = [
 const stats = [
   { value: "12", label: "Guidade steg", icon: Workflow },
   { value: "5", label: "Beslutsgrindar", icon: Target },
-  { value: "4+", label: "Finansiella KPI:er", icon: BarChart3 },
+  { value: "4+", label: "Finansiella nyckeltal", icon: BarChart3 },
   { value: "PDF", label: "Exportera rapport", icon: FileDown },
 ];
 
 const highlights = [
-  "NPV, BCR, IRR och SROI i realtid",
+  "Nuvärde, nyttokostnadskvot, internränta och social avkastning i realtid",
   "Intressenthantering och nyttoregister",
   "Exportera till PDF med ett klick",
   "Fristående kalkyler eller kopplade till projekt",
@@ -166,7 +166,7 @@ export default function Home() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            {"CVRF Nyttokalkyl guidar dig genom hela nyttorealiseringsprocessen – från första problembeskrivningen till en komplett rapport med NPV, BCR, IRR och SROI."}
+            {"CVRF Nyttokalkyl guidar dig genom hela nyttorealiseringsprocessen – från första problembeskrivningen till en komplett rapport med nuvärdesberäkning, nyttokostnadskvot, internränta och social avkastning."}
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
