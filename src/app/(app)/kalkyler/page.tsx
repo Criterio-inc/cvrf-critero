@@ -18,6 +18,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { Trash2 } from 'lucide-react';
 
 const statusLabels: Record<string, string> = {
   draft: 'Utkast',
@@ -35,10 +36,11 @@ const statusColors: Record<string, string> = {
 
 export default function KalkylerPage() {
   const router = useRouter();
-  const { analyses, isLoading, createAnalysis } = useCvrfAnalyses();
+  const { analyses, isLoading, createAnalysis, deleteAnalysis } = useCvrfAnalyses();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [newTitle, setNewTitle] = useState('');
   const [filter, setFilter] = useState<string>('all');
+  const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
 
   const filtered = filter === 'all'
     ? analyses
@@ -155,12 +157,26 @@ export default function KalkylerPage() {
                     <h3 className="font-semibold text-base leading-tight">
                       {analysis.title}
                     </h3>
-                    <Badge
-                      variant="secondary"
-                      className={statusColors[analysis.status ?? 'draft']}
-                    >
-                      {statusLabels[analysis.status ?? 'draft']}
-                    </Badge>
+                    <div className="flex items-center gap-2">
+                      <Badge
+                        variant="secondary"
+                        className={statusColors[analysis.status ?? 'draft']}
+                      >
+                        {statusLabels[analysis.status ?? 'draft']}
+                      </Badge>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setDeleteTarget(analysis.id);
+                        }}
+                        className="p-1.5 rounded-md text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors"
+                        aria-label="Radera"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
+                    </div>
                   </div>
 
                   {analysis.description && (
@@ -189,6 +205,33 @@ export default function KalkylerPage() {
           ))}
         </div>
       )}
+
+      <Dialog open={!!deleteTarget} onOpenChange={(open) => !open && setDeleteTarget(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Radera nyttokalkyl?</DialogTitle>
+            <DialogDescription>
+              Denna åtgärd kan inte ångras. Kalkylen och all data kopplad till den kommer att tas bort permanent.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDeleteTarget(null)}>
+              Avbryt
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={() => {
+                if (deleteTarget) {
+                  deleteAnalysis.mutate(deleteTarget);
+                  setDeleteTarget(null);
+                }
+              }}
+            >
+              Radera
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

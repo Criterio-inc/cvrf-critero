@@ -77,10 +77,25 @@ export function useCvrfAnalyses() {
     },
   });
 
+  /** Delete an analysis. */
+  const deleteAnalysis = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase
+        .from('cvrf_analyses')
+        .delete()
+        .eq('id', id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey });
+    },
+  });
+
   return {
     analyses: query.data ?? [],
     isLoading: query.isLoading,
     error: query.error,
     createAnalysis,
+    deleteAnalysis,
   };
 }

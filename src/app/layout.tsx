@@ -16,9 +16,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nyttokalkyl — CVRF Beräkningsverktyg",
+  title: "CVRF Nyttokalkyl",
   description:
-    "Skapa nyttokalkyler med NPV, BCR, IRR och SROI. Kartlägg nyttor, kostnader och risker med interaktivt nyttoträd.",
+    "Skapa professionella nyttokalkyler med nuvärdesberäkning, nyttokostnadskvot, internränta och social avkastning. Guidat verktyg för nyttorealisering.",
+  icons: {
+    icon: [
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    title: "CVRF Nyttokalkyl",
+    description:
+      "Från idé till evidensbaserat beslut. Skapa professionella nyttokalkyler med guidat stöd.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    locale: "sv_SE",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

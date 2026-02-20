@@ -19,6 +19,11 @@ import {
   Calculator,
   Rocket,
   GraduationCap,
+  Landmark,
+  Building2,
+  ClipboardCheck,
+  HeartHandshake,
+  Presentation,
 } from "lucide-react";
 
 /* ------------------------------------------------------------------ */
@@ -99,18 +104,45 @@ const highlights = [
 const audiences = [
   {
     icon: Users,
-    title: "Projektledare",
+    title: "Projektledare & programledare",
     text: "Få en tydlig bild av förväntade nyttor och kostnader innan projektet startar – och följ upp under hela livscykeln.",
   },
   {
     icon: BarChart3,
-    title: "Ekonomer och controllers",
+    title: "Business analysts & controllers",
     text: "Professionella finansiella nyckeltal beräknade enligt vedertagen metodik. Exportera snygga rapporter till beslutsfattare.",
   },
   {
     icon: Target,
-    title: "Beslutsfattare",
-    text: "Få ett strukturerat beslutsunderlag med tydliga effektmål, beslutsgrindar och nyttoregister.",
+    title: "CIO:er & beslutsfattare",
+    text: "Få ett strukturerat beslutsunderlag med tydliga effektmål, beslutsgrindar och nyttoregister – oavsett om det gäller IT, AI eller verksamhetsutveckling.",
+  },
+];
+
+const frameworks = [
+  {
+    icon: Landmark,
+    title: "ESV:s riktlinjer",
+    description:
+      "Samhällsekonomisk analys enligt Ekonomistyrningsverkets etablerade metodik – beprövad grund som fungerar i alla sektorer.",
+  },
+  {
+    icon: Building2,
+    title: "Ineras nyttokalkylmodell",
+    description:
+      "Kompatibel med Ineras 9-stegsmodell och nyttorealiseringsprocess för e-hälsa och välfärdsteknik.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "SKR:s ramverk",
+    description:
+      "Stödjer SKR:s ramverk för välfärdsteknik och digital transformation i kommuner och regioner.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "PRINCE2/MSP-baserad",
+    description:
+      "Nyttorealisering strukturerad efter PRINCE2 och Managing Successful Programmes (MSP) med beslutsgrindar.",
   },
 ];
 
@@ -135,6 +167,12 @@ export default function Home() {
           <nav className="flex items-center gap-3">
             <ThemeToggle />
             <Button asChild variant="ghost" size="sm">
+              <Link href="/om">Om</Link>
+            </Button>
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/demo">Se exempelanalyser</Link>
+            </Button>
+            <Button asChild variant="ghost" size="sm">
               <Link href="/login">Logga in</Link>
             </Button>
             <Button asChild size="sm">
@@ -157,16 +195,17 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6 pb-24 pt-20 text-center sm:pt-28 sm:pb-32">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
             <BarChart3 className="h-4 w-4" />
-            {"Kostnadsnyttoanalys för offentlig sektor"}
+            {"Nyttokalkyl & nyttorealisering"}
           </div>
 
           <h1 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
-            {"Från idé till "}
-            <span className="text-primary">evidensbaserat beslut</span>
+            {"Navigera frågan om "}
+            <span className="text-primary">nytta och värde</span>
+            {" av digitala investeringar"}
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            {"CVRF Nyttokalkyl guidar dig genom hela nyttorealiseringsprocessen – från första problembeskrivningen till en komplett rapport med nuvärdesberäkning, nyttokostnadskvot, internränta och social avkastning."}
+            {"I en tid där investeringar i IT, AI och digital transformation accelererar behöver organisationer kunna svara på den avgörande frågan: Vad är den faktiska nyttan? CVRF Nyttokalkyl guidar dig hela vägen – från problembeskrivning till evidensbaserat beslut med nuvärde, nyttokostnadskvot och internränta."}
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -343,10 +382,10 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              {"För alla som arbetar med nyttorealisering"}
+              {"För alla som fattar beslut om digitala investeringar"}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              {"Oavsett om du är projektledare, controller eller IT-strateg – CVRF Nyttokalkyl ger dig rätt verktyg."}
+              {"Oavsett om du är projektledare, business analyst, controller, CIO eller verksamhetsutvecklare – CVRF Nyttokalkyl ger dig ett strukturerat ramverk för att kvantifiera och realisera nytta."}
             </p>
           </div>
 
@@ -368,6 +407,81 @@ export default function Home() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Bygger på svensk offentlig metodik */}
+      <section className="border-t border-border/40 bg-muted/30 py-20 sm:py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
+              <Landmark className="h-4 w-4" />
+              {"Förankrad i etablerade ramverk"}
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              {"Bygger på etablerade ramverk"}
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              {"CVRF Nyttokalkyl är utformat utifrån vedertagna ramverk och metoder för nyttorealisering och samhällsekonomisk analys – och fungerar lika bra i privat sektor som i offentlig."}
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {frameworks.map((fw) => (
+              <Card
+                key={fw.title}
+                className="border-border/50 bg-card/80 backdrop-blur-sm transition-shadow hover:shadow-md"
+              >
+                <CardContent className="pt-6 space-y-4">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10">
+                    <fw.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-semibold">{fw.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {fw.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mx-auto mt-12 max-w-3xl text-center">
+            <p className="text-sm text-muted-foreground leading-relaxed">
+  {"Modellen har sina rötter i offentlig sektors beprövade metodik, men är designad för att vara universell. CVRF Nyttokalkyl hjälper alla organisationer att kvantifiera nyttan av digitala satsningar – med både monetära och icke-monetära effekter."}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Workshop & Demo teaser */}
+      <section className="py-20 sm:py-28">
+        <div className="mx-auto max-w-4xl px-6">
+          <Card className="border-primary/20 bg-primary/5 overflow-hidden">
+            <CardContent className="flex flex-col items-center gap-6 pt-8 pb-8 text-center sm:pt-10 sm:pb-10">
+              <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 ring-2 ring-primary/20">
+                <Presentation className="h-7 w-7 text-primary" />
+              </div>
+              <div className="space-y-3">
+                <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                  {"Workshop och interaktiv demo"}
+                </h2>
+                <p className="mx-auto max-w-xl text-muted-foreground leading-relaxed">
+                  {"Vill din organisation skapa samsyn kring nyttorealisering? Använd CVRF Nyttokalkyl som underlag i workshops – bygg nyttokalkyler interaktivt tillsammans med intressenter och skapa ett gemensamt beslutsunderlag."}
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-3 sm:flex-row">
+                <Button asChild size="lg" className="px-8 text-base">
+                  <Link href="/demo">
+                    {"Utforska workshop-läget"}
+                    <ArrowRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="px-8 text-base">
+                  <Link href="/om">{"Läs mer om metodik"}</Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -402,11 +516,19 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-border/40 bg-background">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 sm:flex-row">
-          <div className="flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded bg-primary text-primary-foreground text-xs font-bold">
-              C
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <div className="flex h-6 w-6 items-center justify-center rounded bg-primary text-primary-foreground text-xs font-bold">
+                C
+              </div>
+              <span className="text-sm font-medium">CVRF Nyttokalkyl</span>
             </div>
-            <span className="text-sm font-medium">CVRF Nyttokalkyl</span>
+            <Link href="/om" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Om
+            </Link>
+            <Link href="/demo" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Exempelanalyser
+            </Link>
           </div>
           <p className="text-sm text-muted-foreground">
             {"© "}{new Date().getFullYear()}{" CVRF Nyttokalkyl. Alla rättigheter förbehållna."}

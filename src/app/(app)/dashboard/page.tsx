@@ -1,11 +1,20 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { useCvrfAnalyses } from '@/hooks/cvrf/useCvrfAnalyses';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Calculator, FileEdit, Play, CheckCircle2 } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { Calculator, FileEdit, Play, CheckCircle2, Trash2 } from 'lucide-react';
 
 const statusLabels: Record<string, string> = {
   draft: 'Utkast',
@@ -22,7 +31,8 @@ const statusColors: Record<string, string> = {
 };
 
 export default function DashboardPage() {
-  const { analyses, isLoading } = useCvrfAnalyses();
+  const { analyses, isLoading, deleteAnalysis } = useCvrfAnalyses();
+  const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
 
   const recent = analyses.slice(0, 5);
   const draftCount = analyses.filter((a) => a.status === 'draft').length;
@@ -126,6 +136,18 @@ export default function DashboardPage() {
                       >
                         {statusLabels[analysis.status ?? 'draft']}
                       </Badge>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setDeleteTarget(analysis.id);
+                        }}
+                        className="p-1.5 rounded-md text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors"
+                        aria-label="Radera"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
                     </div>
                   </CardContent>
                 </Card>
@@ -134,6 +156,33 @@ export default function DashboardPage() {
           </div>
         )}
       </div>
+
+      <Dialog open={!!deleteTarget} onOpenChange={(open) => !open && setDeleteTarget(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Radera nyttokalkyl?</DialogTitle>
+            <DialogDescription>
+              Denna åtgärd kan inte ångras. Kalkylen och all data kopplad till den kommer att tas bort permanent.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDeleteTarget(null)}>
+              Avbryt
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={() => {
+                if (deleteTarget) {
+                  deleteAnalysis.mutate(deleteTarget);
+                  setDeleteTarget(null);
+                }
+              }}
+            >
+              Radera
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
