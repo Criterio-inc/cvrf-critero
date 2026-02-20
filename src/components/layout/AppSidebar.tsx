@@ -7,7 +7,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { LayoutDashboard, Calculator, LogOut, Menu } from 'lucide-react';
+import { LayoutDashboard, Calculator, LogOut, Menu, BookOpen } from 'lucide-react';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import {
   Sheet,
@@ -21,6 +21,7 @@ import {
 const navItems = [
   { href: '/dashboard', label: 'Översikt', icon: LayoutDashboard },
   { href: '/kalkyler', label: 'Nyttokalkyler', icon: Calculator },
+  { href: '/demo', label: 'Exempelanalyser', icon: BookOpen },
 ];
 
 export function AppSidebar() {
